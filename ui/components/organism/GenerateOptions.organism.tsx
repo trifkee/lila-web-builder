@@ -11,13 +11,33 @@ import {
   Plus,
   RectangleDashed,
   Ruler,
+  SquaresFour,
   TextAa,
   VectorThree,
 } from "@phosphor-icons/react";
+import { HexAlphaColorPicker } from "react-colorful";
+import InputField from "../atoms/TextInput.atom";
 
-export default function GenerateOptions() {
+export default function GenerateOptions({
+  selectedElement,
+  handleChangeStyle,
+}: {
+  handleChangeStyle: CallableFunction;
+  selectedElement: any;
+}) {
+  console.log(selectedElement, "selected");
+
+  if (!selectedElement) {
+    return (
+      <article className="navigation right">
+        <p>Select element.</p>
+      </article>
+    );
+  }
   return (
     <article className="navigation right">
+      <p>{selectedElement.name}</p>
+
       {/* LAYOUT */}
       <details className="layout section">
         <summary className="section__title">
@@ -27,9 +47,42 @@ export default function GenerateOptions() {
         <article className="section__control">
           <p className="title">Display</p>
           <div className="body">
+            <button
+              onClick={() => (
+                (selectedElement.element.style.background = "red"),
+                (selectedElement.element.style.height = "300px")
+              )}
+            >
+              Test2222
+            </button>
+            <button
+              onClick={() => (
+                (selectedElement.element.style.background = "purple"),
+                (selectedElement.element.style.height = "50px")
+              )}
+            >
+              Test 11111{" "}
+            </button>
             <button>Test</button>
-            <button>Test</button>
-            <button>Test</button>
+          </div>
+        </article>
+
+        <article className="section__control">
+          <p className="title">Background Color</p>
+          <div className="body">
+            <HexAlphaColorPicker
+              color="white"
+              onChange={(e) =>
+                handleChangeStyle({ propName: "background", value: e })
+              }
+            />
+            {/* <InputField
+              label="Hex Color"
+              value={ }
+              onChange={(e) =>
+                handleChangeStyle({ propName: "background", value: e })
+              }
+            /> */}
           </div>
         </article>
 

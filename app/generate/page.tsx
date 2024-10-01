@@ -14,7 +14,8 @@ import useGenerator from "@/ui/hooks/useGenerate.hook";
 export default function Generate() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
-  const { handleAddElement } = useGenerator(iframeRef);
+  const { handleAddElement, selectedElement, handleChangeStyle } =
+    useGenerator(iframeRef);
 
   return (
     <main className="generate">
@@ -31,7 +32,10 @@ export default function Generate() {
       <section className="generate__main">
         <GenerateElements handleAddElement={handleAddElement} />
         <GenerateCanvas iframeRef={iframeRef} />
-        <GenerateOptions />
+        <GenerateOptions
+          handleChangeStyle={handleChangeStyle}
+          selectedElement={selectedElement}
+        />
       </section>
     </main>
   );

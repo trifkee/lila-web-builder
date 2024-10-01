@@ -18,7 +18,7 @@
     </style>
     <title>Document</title>
   </head>
-  <body id="drop-zone" class="bg">
+  <body id="drop-zone">
     <script>
       // Listen for the parent's postMessage event
       window.addEventListener("message", (event) => {
@@ -26,6 +26,7 @@
           const dropZone = document.getElementById("drop-zone");
 
           const newElement = document.createElement(event.data.data);
+          newElement.style.height = "100px";
 
           dropZone.appendChild(newElement);
         }

@@ -7,13 +7,10 @@ import {
   File,
   Keyboard,
   ListBullets,
-  Package,
   Panorama,
-  Plus,
   Table,
   TextT,
 } from "@phosphor-icons/react";
-import InputField from "../atoms/TextInput.atom";
 
 import "@/ui/styles/components/organism/generateElements.organism.scss";
 

@@ -27,6 +27,16 @@ export default function GenerateOptions({
 }) {
   console.log(selectedElement, "selected");
 
+  const handleChangeProperties = ({
+    propName,
+    value,
+  }: {
+    propName: string;
+    value: string;
+  }) => {
+    handleChangeStyle({ propName, value });
+  };
+
   if (!selectedElement) {
     return (
       <article className="navigation right">
@@ -48,22 +58,26 @@ export default function GenerateOptions({
           <p className="title">Display</p>
           <div className="body">
             <button
-              onClick={() => (
-                (selectedElement.element.style.background = "red"),
-                (selectedElement.element.style.height = "300px")
-              )}
+              onClick={() =>
+                handleChangeProperties({ propName: "display", value: "flex" })
+              }
             >
-              Test2222
+              Flex
             </button>
             <button
-              onClick={() => (
-                (selectedElement.element.style.background = "purple"),
-                (selectedElement.element.style.height = "50px")
-              )}
+              onClick={() =>
+                handleChangeProperties({ propName: "display", value: "grid" })
+              }
             >
-              Test 11111{" "}
+              Grid
             </button>
-            <button>Test</button>
+            <button
+              onClick={() =>
+                handleChangeProperties({ propName: "display", value: "block" })
+              }
+            >
+              Block
+            </button>
           </div>
         </article>
 
@@ -73,7 +87,7 @@ export default function GenerateOptions({
             <HexAlphaColorPicker
               color="white"
               onChange={(e) =>
-                handleChangeStyle({ propName: "background", value: e })
+                handleChangeProperties({ propName: "background", value: e })
               }
             />
             {/* <InputField

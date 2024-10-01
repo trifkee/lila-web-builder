@@ -15,8 +15,6 @@ export default function useGenerator(iframeRef: any) {
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
     const element = iframeDoc.querySelector(e);
 
-    console.log(element, "TTTT");
-
     if (element) {
       // Update the selected element and its styles
       setSelectedElement(element);
@@ -54,10 +52,6 @@ export default function useGenerator(iframeRef: any) {
     selectedElement.element.style[propName] = value;
   }
   // ----
-
-  useEffect(() => {
-    Object.keys(elementStyles).forEach((key) => console.log(key));
-  }, [elementStyles]);
 
   useEffect(() => {
     const iframeDoc =

@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+
+  &.number {
+    display: grid;
+    grid-template-columns: 0.15fr 1fr;
+
+    & > label {
+      aspect-ratio: 1;
+      border: 1px solid $gray-clr-700;
+      border-right: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb($gray-clr-700, 0.6);
+    }
+  }
+
+  & > label {
+    font-size: 0.85rem;
+  }
+
+  & > input {
+    font-size: clamp(0.5rem, 0.85rem, 1rem);
+    padding: 0.25rem 0.5rem;
+    background: rgb($gray-clr-50, 0.05);
+    border: 1px solid $gray-clr-700;
+    transition: 0.2s ease background;
+
+    &:focus {
+      background: rgb($gray-clr-50, 0.1);
+      border: 1px solid rgb($primary-complement-400, 0.5);
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgb($gray-clr-50, 0.35);
+    }
+  }
+}

@@ -4,8 +4,17 @@
   max-width: 100%;
   overflow: auto;
   height: calc(100dvh - $navigation-height);
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // ------------
 
   .section {
+    position: relative;
     display: flex;
     border: none;
 
@@ -27,11 +36,11 @@
     }
 
     &__control {
+      background: rgb($gray-clr-50, 0.05);
       display: flex;
       gap: 0.25rem;
       flex-direction: column;
       padding: 1rem;
-      //   border-top: 1px solid rgb($gray-clr-700, 0.5);
 
       .title {
         font-size: 0.85rem;

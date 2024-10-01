@@ -1,0 +1,56 @@
+@import "../../variables.scss";
+
+.main-option {
+  //   background: red;
+  padding: 0.85rem;
+  border-bottom: 1px solid rgb($gray-clr-600, 0.5);
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s ease background;
+
+  &:hover {
+    background: rgb($gray-clr-800, 0.95);
+
+    .main-option__tooltip {
+      opacity: 1;
+      z-index: 2;
+      left: 120%;
+    }
+  }
+
+  &__tooltip {
+    text-wrap: nowrap;
+    z-index: -100;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    z-index: 0;
+    color: $gray-clr-300;
+    border-radius: 0.25rem;
+    background: rgb($gray-clr-800, 1);
+    position: absolute;
+
+    left: 60%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.25rem 0.5rem;
+    isolation: isolate;
+    opacity: 0;
+    // display: none;
+
+    // &::before {
+    //   --size: 16px;
+
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   width: var(--size);
+    //   z-index: -1;
+    //   aspect-ratio: 1;
+    //   left: -15%;
+    //   transform: rotate(45deg) translateX(50%);
+    //   background: rgb($gray-clr-800, 1);
+    // }
+
+    // display: none;
+  }
+}

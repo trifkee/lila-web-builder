@@ -8,8 +8,14 @@ import GenerateCanvas from "@/ui/components/organism/GenerateCanvas.organism";
 
 import "@/ui/styles/pages/generate.page.scss";
 import "@/ui/styles/components/organism/generateOptions.organism.scss";
+import { useEffect, useRef } from "react";
+import useGenerator from "@/ui/hooks/useGenerate.hook";
 
 export default function Generate() {
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  const { handleAddElement } = useGenerator(iframeRef);
+
   return (
     <main className="generate">
       <nav className="generate__navigation">
@@ -23,8 +29,8 @@ export default function Generate() {
       </nav>
 
       <section className="generate__main">
-        <GenerateElements />
-        <GenerateCanvas />
+        <GenerateElements handleAddElement={handleAddElement} />
+        <GenerateCanvas iframeRef={iframeRef} />
         <GenerateOptions />
       </section>
     </main>

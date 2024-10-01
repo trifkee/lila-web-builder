@@ -2,16 +2,20 @@
 
 .navigation {
   max-width: 100%;
-  overflow: auto;
   height: calc(100dvh - $navigation-height);
-  /* Hide scrollbar */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 
-  &::-webkit-scrollbar {
-    display: none;
+  &,
+  & > * {
+    overflow: auto;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    // ------------
   }
-  // ------------
 
   .section {
     position: relative;

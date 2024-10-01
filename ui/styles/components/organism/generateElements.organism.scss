@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.navigation.left {
+  overflow: visible !important;
+  display: flex;
+
+  .main {
+    overflow: visible;
+    border-right: 1px solid rgb($gray-clr-700, 0.85);
+  }
+
+  .secondary {
+    width: 200px;
+
+    &__title {
+      display: none;
+      border-bottom: 1px solid rgb($gray-clr-700, 0.85);
+      padding: 0.5rem 1rem;
+    }
+  }
+}

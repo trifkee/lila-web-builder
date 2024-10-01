@@ -1,9 +1,11 @@
 "use client";
 
-export default function GenerateCanvas() {
+export default function GenerateCanvas({ iframeRef }: { iframeRef: any }) {
   return (
-    <article className="canvas">
-      <iframe src="./iframe-content.html"></iframe>
-    </article>
+    <>
+      <article className="canvas">
+        <iframe ref={iframeRef} src="./iframe-content.html"></iframe>
+      </article>
+    </>
   );
 }

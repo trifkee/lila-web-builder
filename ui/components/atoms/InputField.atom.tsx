@@ -3,14 +3,16 @@
 import "@/ui/styles/components/atoms/inputField.atom.scss";
 
 type InputType = {
-  label: string;
-  value: string;
+  label?: string | React.ReactNode;
+  value: string | number;
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
   name?: string;
   type?: "text" | "number" | "email" | "password";
   disabled?: boolean;
   required?: boolean;
   placeholder?: string;
+  min?: number;
+  className?: string;
 };
 
 export default function InputField({
@@ -22,14 +24,19 @@ export default function InputField({
   placeholder,
   required,
   type,
+  min,
+  className,
 }: InputType) {
   return (
-    <article className={`input-field ${type}`}>
-      <label htmlFor={label ?? name}>{label ?? name}</label>
+    <article className={`input-field ${type} ${className}`}>
+      <label htmlFor={typeof label === "string" ? label ?? name : ""}>
+        {label ?? name}
+      </label>
       <input
+        min={min}
         onChange={onChange}
         type={type}
-        id={label ?? name}
+        id={typeof label === "string" ? label ?? name : ""}
         value={value}
         placeholder={placeholder}
         required={required}

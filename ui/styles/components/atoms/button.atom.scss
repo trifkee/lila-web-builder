@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.button {
+  background: $cta-bg-clr;
+  border: $cta-outline;
+
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: 0.2s ease all;
+
+  svg,
+  path {
+    color: white;
+  }
+
+  &:hover {
+    svg,
+    path {
+      color: $cta-outline-hover;
+    }
+
+    border: $cta-outline-hover;
+    background: $cta-bg-clr-hover;
+  }
+}

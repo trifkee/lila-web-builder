@@ -3,10 +3,13 @@
 .input-field {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   &.number {
     display: grid;
     grid-template-columns: 0.15fr 1fr;
+    border-radius: 0.25rem;
+    overflow: hidden;
 
     & > label {
       aspect-ratio: 1;
@@ -25,15 +28,19 @@
   }
 
   & > input {
+    // border-radius: 0.25rem;
+    // max-height: 1.25rem;
+    // height: 100%;
+    width: 100%;
     font-size: clamp(0.5rem, 0.85rem, 1rem);
     padding: 0.25rem 0.5rem;
-    background: rgb($gray-clr-50, 0.05);
-    border: 1px solid $gray-clr-700;
+    background: $cta-bg-clr;
+    border: $cta-outline;
     transition: 0.2s ease background;
 
     &:focus {
-      background: rgb($gray-clr-50, 0.1);
-      border: 1px solid rgb($primary-complement-400, 0.5);
+      background: $cta-bg-clr-hover;
+      border: $cta-outline-hover;
       outline: none;
     }
 

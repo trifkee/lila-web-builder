@@ -1,32 +1,42 @@
 "use client";
 
 import {
+  ArrowDown,
+  ArrowRight,
   ArrowsInLineHorizontal,
   ArrowsOutCardinal,
+  ArrowsOutLineHorizontal,
+  ArrowsOutLineVertical,
+  ArrowUDownLeft,
   Link as LinkIcon,
   MagicWand,
   Monitor,
   Palette,
   Play,
-  Plus,
   RectangleDashed,
   Ruler,
-  SquaresFour,
+  SelectionPlus,
+  SplitHorizontal,
   TextAa,
   VectorThree,
 } from "@phosphor-icons/react";
 import { HexAlphaColorPicker } from "react-colorful";
-import InputField from "../atoms/TextInput.atom";
+import Select from "../atoms/Select.atom";
+import { DISPLAY_OPTIONS } from "@/lib/constants/options";
+import InputField from "../atoms/InputField.atom";
+import { useEffect } from "react";
+import Button from "../atoms/Button.atom";
+import AligmentBox from "../moleculs/AligmentBox.molecul";
 
 export default function GenerateOptions({
   selectedElement,
   handleChangeStyle,
+  elementStyles,
 }: {
   handleChangeStyle: CallableFunction;
   selectedElement: any;
+  elementStyles: any;
 }) {
-  console.log(selectedElement, "selected");
-
   const handleChangeProperties = ({
     propName,
     value,
@@ -37,16 +47,26 @@ export default function GenerateOptions({
     handleChangeStyle({ propName, value });
   };
 
-  if (!selectedElement) {
+  if (!selectedElement.name || selectedElement.name.toLowerCase() === "html") {
     return (
-      <article className="navigation right">
+      <article
+        className="navigation right"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: ".5rem",
+        }}
+      >
+        <SelectionPlus size={64} />
         <p>Select element.</p>
       </article>
     );
   }
   return (
     <article className="navigation right">
-      <p>{selectedElement.name}</p>
+      <p style={{ padding: ".25rem .5rem" }}>{selectedElement.name}</p>
 
       {/* LAYOUT */}
       <details className="layout section">
@@ -57,27 +77,123 @@ export default function GenerateOptions({
         <article className="section__control">
           <p className="title">Display</p>
           <div className="body">
-            <button
-              onClick={() =>
-                handleChangeProperties({ propName: "display", value: "flex" })
-              }
-            >
-              Flex
-            </button>
-            <button
-              onClick={() =>
-                handleChangeProperties({ propName: "display", value: "grid" })
-              }
-            >
-              Grid
-            </button>
-            <button
-              onClick={() =>
-                handleChangeProperties({ propName: "display", value: "block" })
-              }
-            >
-              Block
-            </button>
+            <Select
+              defaultValue={elementStyles.display}
+              options={DISPLAY_OPTIONS}
+              onChange={(e: any) => {
+                handleChangeProperties({
+                  propName: "display",
+                  value: e.target.value,
+                });
+              }}
+            />
+          </div>
+        </article>
+
+        <article className="section__control">
+          <p className="title">Alignment</p>
+          <div className="body alignments">
+            <div className="direction">
+              <Button>
+                <ArrowRight />
+              </Button>
+              <Button>
+                <ArrowDown />
+              </Button>
+              <Button>
+                <ArrowUDownLeft />
+              </Button>
+            </div>
+
+            <InputField
+              className="layout-gap"
+              min={0}
+              value={elementStyles.gap.split("px")[0] ?? 0}
+              label={<SplitHorizontal />}
+              type="number"
+              onChange={(e: any) => {
+                handleChangeProperties({
+                  propName: "gap",
+                  value: e.target.value,
+                });
+              }}
+            />
+
+            <AligmentBox />
+            <div className="padding">
+              <InputField
+                min={0}
+                value={elementStyles.gap.split("px")[0] ?? 0}
+                label={<ArrowsOutLineHorizontal />}
+                type="number"
+                onChange={(e: any) => {
+                  handleChangeProperties({
+                    propName: "gap",
+                    value: e.target.value,
+                  });
+                }}
+              />
+              <InputField
+                min={0}
+                value={elementStyles.gap.split("px")[0] ?? 0}
+                label={<ArrowsOutLineVertical />}
+                type="number"
+                onChange={(e: any) => {
+                  handleChangeProperties({
+                    propName: "gap",
+                    value: e.target.value,
+                  });
+                }}
+              />
+            </div>
+          </div>
+        </article>
+
+        <article className="section__control">
+          <p className="title">Padding</p>
+          <div className="body">
+            <InputField
+              min={0}
+              value={elementStyles.gap.split("px")[0] ?? 0}
+              label={<ArrowsOutLineHorizontal />}
+              type="number"
+              onChange={(e: any) => {
+                handleChangeProperties({
+                  propName: "gap",
+                  value: e.target.value,
+                });
+              }}
+            />
+            <InputField
+              min={0}
+              value={elementStyles.gap.split("px")[0] ?? 0}
+              label={<ArrowsOutLineVertical />}
+              type="number"
+              onChange={(e: any) => {
+                handleChangeProperties({
+                  propName: "gap",
+                  value: e.target.value,
+                });
+              }}
+            />
+          </div>
+        </article>
+
+        <article className="section__control">
+          <p className="title">Gap</p>
+          <div className="body">
+            <InputField
+              min={0}
+              value={elementStyles.gap.split("px")[0] ?? 0}
+              label={<SplitHorizontal />}
+              type="number"
+              onChange={(e: any) => {
+                handleChangeProperties({
+                  propName: "gap",
+                  value: e.target.value,
+                });
+              }}
+            />
           </div>
         </article>
 
@@ -85,27 +201,15 @@ export default function GenerateOptions({
           <p className="title">Background Color</p>
           <div className="body">
             <HexAlphaColorPicker
-              color="white"
+              style={{ width: "100%" }}
+              color={elementStyles.backgroundColor}
               onChange={(e) =>
-                handleChangeProperties({ propName: "background", value: e })
+                handleChangeProperties({
+                  propName: "background-color",
+                  value: e,
+                })
               }
             />
-            {/* <InputField
-              label="Hex Color"
-              value={ }
-              onChange={(e) =>
-                handleChangeStyle({ propName: "background", value: e })
-              }
-            /> */}
-          </div>
-        </article>
-
-        <article className="section__control">
-          <p className="title">Direction</p>
-          <div className="body">
-            <button>Test</button>
-            <button>Test</button>
-            <button>Test</button>
           </div>
         </article>
 

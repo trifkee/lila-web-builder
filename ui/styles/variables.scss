@@ -59,3 +59,8 @@ $secondary-complement-800: #4d0900;
 $secondary-complement-900: #260400;
 
 $navigation-height: 6dvh;
+
+$cta-outline: 1px solid $gray-clr-700;
+$cta-bg-clr: rgb($gray-clr-700, 0.25);
+$cta-outline-hover: 1px solid rgb($primary-clr-400, 0.75);
+$cta-bg-clr-hover: rgb($primary-clr-600, 0.25);

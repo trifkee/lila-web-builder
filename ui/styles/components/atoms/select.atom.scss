@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.select {
+  width: 100%;
+  color: white;
+  background: $cta-bg-clr;
+  outline: $cta-outline;
+  border-radius: 0.25rem;
+  padding: 0.35rem 0.5rem;
+  transition: 0.2s ease background;
+  cursor: pointer;
+
+  &:hover {
+    outline: $cta-outline-hover;
+    background: $cta-bg-clr-hover;
+  }
+
+  option {
+    color: black;
+  }
+}

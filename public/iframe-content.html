@@ -15,6 +15,16 @@
       #drop-zone {
         background-color: white;
       }
+
+      .lila-builder {
+        outline-offset: -4px;
+        outline: 1px dashed rgb(115, 0, 230, 0.35);
+        transition: 0.2s ease all;
+
+        &:hover {
+          outline: 1px dashed rgb(115, 0, 230, 1);
+        }
+      }
     </style>
     <title>Document</title>
   </head>
@@ -27,6 +37,7 @@
 
           const newElement = document.createElement(event.data.data);
           newElement.style.height = "100px";
+          newElement.classList.add("lila-builder");
 
           dropZone.appendChild(newElement);
         }

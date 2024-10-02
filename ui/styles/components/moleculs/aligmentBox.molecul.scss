@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.alignment-box {
+  background: $cta-bg-clr;
+  max-width: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 0.25rem;
+  outline: $cta-outline;
+
+  &__box {
+    aspect-ratio: 1;
+    font-size: 0.35rem;
+    color: white;
+    display: grid;
+    place-items: center;
+    transition: 0.2s ease all;
+    border-radius: 0.15rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $cta-outline;
+      background: $cta-bg-clr;
+    }
+
+    &.selected {
+      background: $primary-clr-500;
+    }
+  }
+}

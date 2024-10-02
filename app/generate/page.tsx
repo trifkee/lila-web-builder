@@ -1,42 +1,14 @@
-"use client";
-
-import Link from "next/link";
-
-import GenerateOptions from "@/ui/components/organism/GenerateOptions.organism";
-import GenerateElements from "@/ui/components/organism/GenerateElements.organism";
-import GenerateCanvas from "@/ui/components/organism/GenerateCanvas.organism";
+import GenerateNavigation from "@/ui/components/moleculs/GenerateNavigation.molecul";
+import GenerateBody from "@/ui/components/organism/GenerateBody.organism";
 
 import "@/ui/styles/pages/generate.page.scss";
 import "@/ui/styles/components/organism/generateOptions.organism.scss";
-import { useEffect, useRef } from "react";
-import useGenerator from "@/ui/hooks/useGenerate.hook";
 
 export default function Generate() {
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
-
-  const { handleAddElement, selectedElement, handleChangeStyle } =
-    useGenerator(iframeRef);
-
   return (
     <main className="generate">
-      <nav className="generate__navigation">
-        <Link href={"/"}>
-          <h1>Lila</h1>
-        </Link>
-
-        <div className="document-title">
-          {true ? <p className="title">Untitled</p> : <input type="text" />}
-        </div>
-      </nav>
-
-      <section className="generate__main">
-        <GenerateElements handleAddElement={handleAddElement} />
-        <GenerateCanvas iframeRef={iframeRef} />
-        <GenerateOptions
-          handleChangeStyle={handleChangeStyle}
-          selectedElement={selectedElement}
-        />
-      </section>
+      <GenerateNavigation />
+      <GenerateBody />
     </main>
   );
 }

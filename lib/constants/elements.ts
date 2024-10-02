@@ -1,4 +1,4 @@
-export const SECTIONS = [
+export const SECTIONS_ELEMENTS = [
   {
     id: 0,
     name: "Section",
@@ -46,7 +46,7 @@ export const SECTIONS = [
   },
 ];
 
-export const TEXT = [
+export const TEXT_ELEMENTS = [
   {
     id: 0,
     name: "Paragraph",
